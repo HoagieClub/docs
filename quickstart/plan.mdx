@@ -1,0 +1,374 @@
+---
+title: 'Hoagie Plan'
+description: 'Learn how to set up your local development environment for Hoagie Plan'
+---
+
+# Setup
+
+The setup process will slightly differ depending on your operating system.
+
+<AccordionGroup>
+  <Accordion title="MacOS">
+    The easiest way to install the required dependencies is to use [Homebrew](https://brew.sh/).
+
+    ## Step 1. Install Homebrew
+
+    Run the following command in your terminal:
+
+    ```bash zsh
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    ```
+
+    We'll use Homebrew to install:
+    - [PostgreSQL](https://www.postgresql.org/), our database.
+    - [Bun](https://bun.sh/), our TypeScript package manager.
+    - [uv](https://docs.astral.sh/uv/), our Python package manager.
+
+    For more information on our tech stack, please visit our [tech stack page](/tech-stack).
+
+    ----
+
+    ## Step 2. Install required packages
+
+    PostgreSQL:
+    ```bash zsh
+    brew install postgresql@17 # Latest version
+    ```
+
+    Bun:
+    ```bash zsh
+    brew install oven-sh/bun/bun
+    ```
+
+    uv:
+    ```bash zsh
+    brew install uv
+    ```
+
+    ----
+
+    ## Step 3. Clone the Hoagie Plan repository
+
+    We use [GitHub](https://github.com/hoagieclub/) for version control.
+
+    ```bash zsh
+    git clone https://github.com/hoagieclub/plan.git
+    ```
+
+    <Info>
+    **NOTE:** Environment variables are <b>not</b> included in cloned repositories.
+    </Info>
+
+    ----
+
+    ## Step 4. Environment variables
+
+    After you have the repository on your local device, you'll need to add the environment variables.
+
+    #### Frontend
+    In the `frontend/` directory, create a hidden file named `.env.local`.
+
+    #### Backend
+    In the `backend/` directory, create a hidden file named `.env`.
+
+    #### Values
+    See the Slack for the values for these environment variables. Once you have access to the files, paste them in as is.
+
+    There are template files for the frontend and the backend -- `.env.local.example` and `.env.example`, respectively -- so that you know which values the app is expecting.
+
+    ----
+
+    ## Step 5. Downloading dependencies
+
+    You will need to download the required dependencies before you can run the app.
+
+    #### Frontend
+
+    In the base directory of the project, `cd` into the `frontend/` directory and run the following command:
+
+    ```bash zsh
+    bun install
+    ```
+
+    This installs the frontend dependencies as specified in `package.json` to ensure consistent package versions across environments.
+
+    #### Backend
+
+    In the base directory of the project, `cd` into the `backend/` directory.
+
+    Then, create a **virtual environment** using the following command:
+
+    <CodeGroup>
+    ```bash uv
+    uv venv --prompt hoagie-plan .venv
+    ```
+
+    ```bash python3
+    python3 -m venv --prompt hoagie-plan .venv
+    ```
+
+    </CodeGroup>
+
+    This creates a virtual environment named `hoagie-plan` contained within the `.venv` directory.
+    Activate this virtual environment with the following command:
+
+    ```bash venv
+    source .venv/bin/activate
+    ```
+
+    Then, install the backend dependencies with the following command:
+    ```bash zsh
+    uv sync
+    ```
+
+    This installs the required Python packages as specified in `pyproject.toml`, `requirements.txt`, and `uv.lock` to ensure consistent package versions across environments.
+
+    ----
+
+    ## Step 6. Running the app
+
+    You will need to run the frontend and backend applications **simultaneously.**
+
+    #### Frontend
+    In the base directory of the project, `cd` into the `frontend/` directory:
+    ```bash zsh
+    cd frontend
+    ```
+
+    Then, run the following command:
+    ```bash zsh
+    bun run dev
+    ```
+
+    #### Backend
+    In the base directory of the project, `cd` into the `backend/` directory:
+    ```bash zsh
+    cd backend
+    ```
+
+    Then, run the following command:
+    <CodeGroup>
+    ```bash uv
+    uv run manage.py runserver
+    ```
+
+    ```bash python3
+    python3 manage.py runserver
+    ```
+    </CodeGroup>
+
+    ----
+
+    You're all set! Happy coding.
+
+  </Accordion>
+  <Accordion title="Windows">
+    It is a bit of a nightmare to get the Windows environment set up.
+
+    We've found the fastest workaround to be installing the Windows Subsystem for Linux (WSL). For more details, see this [article](https://learn.microsoft.com/en-us/windows/wsl/install).
+
+    ## Step 1. Open PowerShell or Windows Command Prompt
+    You must do this in **administrator mode** by right-clicking and selecting "Run as administrator".
+
+    ----
+
+    ## Step 2. Installing WSL
+    Run the following command:
+    ```powershell powershell
+    wsl --install
+    ```
+
+    ----
+
+    ## Step 3. Open Ubuntu
+    Open the **Start Menu**, search for **Ubuntu** (or the name of the Linux distribution you installed), and click on the app to open it.
+
+    When you launch Ubuntu for the first time, it will take a few minutes to set up, and you may be prompted to create a new username and password for your Linux environment.
+
+    ## Step 4. Install Homebrew
+
+    From here, the steps should be identical to the MacOS guide above.
+
+    The easiest way to install the required dependencies is to use [Homebrew](https://brew.sh/).
+
+    Run the following command in your terminal:
+
+    ```bash bash
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    ```
+
+    We'll use Homebrew to install:
+    - [PostgreSQL](https://www.postgresql.org/), our database.
+    - [Bun](https://bun.sh/), our TypeScript package manager.
+    - [uv](https://docs.astral.sh/uv/), our Python package manager.
+
+    For more information on our tech stack, please visit our [tech stack page](/tech-stack).
+
+    ----
+
+    ## Step 5. Install required packages
+
+    PostgreSQL:
+    ```bash bash
+    brew install postgresql@17 # Latest version
+    ```
+
+    Bun:
+    ```bash bash
+    brew install oven-sh/bun/bun
+    ```
+
+    uv:
+    ```bash bash
+    brew install uv
+    ```
+
+    ----
+
+    ## Step 6. Clone the Hoagie Plan repository
+
+    We use [GitHub](https://github.com/hoagieclub/) for version control.
+
+    ```bash bash
+    git clone https://github.com/hoagieclub/plan.git
+    ```
+
+    <Info>
+    **NOTE:** Environment variables are <b>not</b> included in cloned repositories.
+    </Info>
+
+    ----
+
+    ## Step 7. Environment variables
+
+    After you have the repository on your local device, you'll need to add the environment variables.
+
+    #### Frontend
+    In the `frontend/` directory, create a hidden file named `.env.local`.
+
+    #### Backend
+    In the `backend/` directory, create a hidden file named `.env`.
+
+    #### Values
+    See the Slack for the values for these environment variables. Once you have access to the files, paste them in as is.
+
+    There are template files for the frontend and the backend -- `.env.local.example` and `.env.example`, respectively -- so that you know which values the app is expecting.
+
+    ----
+
+    ## Step 8. Downloading dependencies
+
+    You will need to download the required dependencies before you can run the app.
+
+    #### Frontend
+
+    In the base directory of the project, `cd` into the `frontend/` directory and run the following command:
+
+    ```bash bash
+    bun install
+    ```
+
+    This installs the frontend dependencies as specified in `package.json` to ensure consistent package versions across environments.
+
+    #### Backend
+
+    In the base directory of the project, `cd` into the `backend/` directory.
+
+    Then, create a **virtual environment** using the following command:
+
+    <CodeGroup>
+    ```bash uv
+    uv venv --prompt hoagie-plan .venv
+    ```
+
+    ```bash python3
+    python3 -m venv --prompt hoagie-plan .venv
+    ```
+
+    </CodeGroup>
+
+    This creates a virtual environment named `hoagie-plan` contained within the `.venv` directory.
+    Activate this virtual environment with the following command:
+
+    ```bash venv
+    source .venv/bin/activate
+    ```
+
+    Then, install the backend dependencies with the following command:
+    ```bash bash
+    uv sync
+    ```
+
+    This installs the required Python packages as specified in `pyproject.toml`, `requirements.txt`, and `uv.lock` to ensure consistent package versions across environments.
+
+    ----
+
+    ## Step 9. Running the app
+
+    You will need to run the frontend and backend applications **simultaneously.**
+
+    #### Frontend
+    In the base directory of the project, `cd` into the `frontend/` directory:
+    ```bash bash
+    cd frontend
+    ```
+
+    Then, run the following command:
+    ```bash bash
+    bun run dev
+    ```
+
+    #### Backend
+    In the base directory of the project, `cd` into the `backend/` directory:
+    ```bash bash
+    cd backend
+    ```
+
+    Then, run the following command:
+    <CodeGroup>
+    ```bash uv
+    uv run manage.py runserver
+    ```
+
+    ```bash python3
+    python3 manage.py runserver
+    ```
+    </CodeGroup>
+
+    ----
+
+    You're all set! Happy coding.
+
+    ---
+
+  </Accordion>
+</AccordionGroup>
+
+## Troubleshooting
+
+Here are some common issues you might encounter when setting up your development environment.
+
+<AccordionGroup>
+  <Accordion title="Scary-looking `psycopg2` error">
+    Ensure that you have `PostgreSQL` installed on your system using Homebrew. You can install it by running:
+    ```bash
+    brew install postgresql
+    ```
+    After installation, verify that the PostgreSQL path is added to your `PATH` environment variable to avoid issues. You can check this by running:
+    ```bash
+    echo $PATH
+    ```
+    If the path is missing, you can add PostgreSQL to your path by appending it directly to your shell configuration file (like `.zshrc`, `.bash_profile`, or `.bashrc`). For example:
+    ```bash zsh
+    echo 'export PATH="/usr/local/opt/postgresql/bin:$PATH"' >> ~/.zshrc
+    ```
+    Remember to source the file afterward to apply the changes immediately:
+    ```bash zsh
+    source ~/.zshrc
+    ```
+  </Accordion>
+  <Accordion title="Undefined error when I navigate to pages other than homepage">
+    Make sure the environment variables, `.env.local` and `.env`, are set at the root level of the `frontend/` and `backend/` directories, respectively.
+  </Accordion>
+</AccordionGroup>
+
