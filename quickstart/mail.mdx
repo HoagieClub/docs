@@ -1,8 +1,116 @@
 ---
-title: 'Hoagie Mail'
-description: 'Learn how to set up your local development environment for Hoagie Mail'
+title: 'Hoagie Mail/Stuff'
+description: 'Learn how to set up your local development environment for Hoagie Mail and Hoagie Stuff.'
 ---
 
-<Note>
-  **This section is under active development.**
-</Note>
+# Setup
+
+If you have a Windows operating system, complete these steps before continuing.
+
+<AccordionGroup>
+  <Accordion title="Windows">
+    It is a bit of a nightmare to get the Windows environment set up.
+
+    We've found the fastest workaround to be installing the Windows Subsystem for Linux (WSL). For more details, see this [article](https://learn.microsoft.com/en-us/windows/wsl/install).
+
+    ## Step 1: Open PowerShell or Windows Command Prompt
+    You must do this in **administrator mode** by right-clicking and selecting "Run as administrator".
+
+    ----
+
+    ## Step 2: Installing WSL
+    Run the following command:
+    ```powershell powershell
+    wsl --install
+    ```
+
+    ----
+
+    ## Step 3: Open Ubuntu
+    Open the **Start Menu**, search for **Ubuntu** (or the name of the Linux distribution you installed), and click on the app to open it.
+
+    When you launch Ubuntu for the first time, it will take a few minutes to set up, and you may be prompted to create a new username and password for your Linux environment.
+
+  </Accordion>
+</AccordionGroup>
+
+ ## Step 1: Install Homebrew
+
+    The easiest way to install the required dependencies is to use [Homebrew](https://brew.sh/). Run the following command in your terminal:
+
+    ```bash bash
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    ```
+
+    ----
+
+    ## Step 2: Install required tools
+
+    [Yarn](https://classic.yarnpkg.com/en/), our package manager:
+    ```bash bash
+    brew install yarn
+    ```
+
+    We use [VSCode](https://code.visualstudio.com/) for development. Download it and get the following extensions:
+    - [Eslint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
+    - [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
+    - [Go](https://marketplace.visualstudio.com/items?itemName=golang.Go)
+
+    ---
+
+    ## Step 3: Clone the repositories.
+
+    We use [GitHub](https://github.com/hoagieclub/) for version control. You will need to have [GitHub SSH keys](https://docs.github.com/en/github/authenticating-to-github/connecting-to-github-with-ssh) set up.
+
+    ```bash bash
+    git clone https://github.com/HoagieClub/mail.git
+    git clone https://github.com/HoagieClub/api.git
+    git clone https://github.com/HoagieClub/stuff.git
+    ```
+
+    <Info>
+    **NOTE:** Environment variables are <b>not</b> included in cloned repositories.
+    </Info>
+
+    ---
+
+    ## Step 4: Environment variables
+
+    After you have the repository on your local device, you'll need to add the environment variables.
+
+    For all three repositories, rename the `.env.local.txt` file to `.env.local`. For mail and stuff, copy over the environment variables from Slack. 
+
+    ---
+    
+    ## Step 5: Download dependencies
+
+    You will need to download the required dependencies before you can run the apps.
+
+    From each respository, run `yarn`:
+    ```bash bash
+    yarn
+    ```
+
+    ---
+
+    ## Step 6: Run the apps
+
+    You will need to run the frontend and backend simultaneously.
+
+    ### Backend
+    The backend is written in Go. Run `main.go` from the api repository.
+
+    ```bash bash
+    go run main.go reset
+    ```
+
+    ### Frontend
+    From either the stuff or mail repository, run:
+
+    ```bash bash
+    yarn dev
+    ```
+
+    ---
+
+    You're all set! Happy coding. Be sure to check out the [Development Workflow](/quickstart/development) guide!
