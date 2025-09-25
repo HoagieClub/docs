@@ -78,6 +78,11 @@ If you have a Windows operating system, complete these steps before continuing.
 
     After you have the repository on your local device, you'll need to add the environment variables.
 
+    Switch into the preview branch:
+    ```bash bash
+    git switch preview
+    ```
+
     For all three repositories, rename the `.env.local.txt` file to `.env.local`. For mail and stuff, copy over the environment variables from Slack. 
 
     ---
@@ -104,12 +109,16 @@ If you have a Windows operating system, complete these steps before continuing.
     go run main.go reset
     ```
 
+    It might take a second to start up. Once it displays `[i] Running on https://localhost:8080`, you're all set.
+
     ### Frontend
     From either the stuff or mail repository, run:
 
     ```bash bash
     yarn dev
     ```
+
+    Open the localhost link in your browser.
 
     ---
 

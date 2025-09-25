@@ -156,7 +156,7 @@ The setup process will slightly differ depending on your operating system.
 
     ----
 
-    You're all set! Happy coding.
+    You're all set! Happy coding. Be sure to check out the [Development Workflow](/quickstart/development) guide!
 
   </Accordion>
   <Accordion title="Windows">
@@ -334,7 +334,7 @@ The setup process will slightly differ depending on your operating system.
 
     ----
 
-    You're all set! Happy coding.
+    You're all set! Happy coding. Be sure to check out the [Development Workflow](/quickstart/development) guide!
 
     ---
 
@@ -348,15 +348,30 @@ Here are some common issues you might encounter when setting up your development
 <AccordionGroup>
   <Accordion title="Scary-looking `psycopg2` error">
     Ensure that you have `PostgreSQL` installed on your system using Homebrew.
-    You can install it by running: ```bash brew install postgresql ``` After
-    installation, verify that the PostgreSQL path is added to your `PATH`
-    environment variable to avoid issues. You can check this by running: ```bash
-    echo $PATH ``` If the path is missing, you can add PostgreSQL to your path
+    You can install it by running: 
+    
+    ```bash 
+    brew install postgresql
+    ``` 
+    
+    After installation, verify that the PostgreSQL path is added to your `PATH`
+    environment variable to avoid issues. You can check this by running: 
+    
+    ```bash
+    echo $PATH 
+    ``` 
+    
+    If the path is missing, you can add PostgreSQL to your path
     by appending it directly to your shell configuration file (like `.zshrc`,
-    `.bash_profile`, or `.bashrc`). For example: ```bash zsh echo 'export
-    PATH="/usr/local/opt/postgresql/bin:$PATH"' >> ~/.zshrc ``` Remember to
-    source the file afterward to apply the changes immediately: ```bash zsh
-    source ~/.zshrc ```
+    `.bash_profile`, or `.bashrc`). For example: 
+    ```bash zsh 
+    echo 'export PATH="/usr/local/opt/postgresql/bin:$PATH"' >> ~/.zshrc 
+    ``` 
+    
+    Remember to source the file afterward to apply the changes immediately: 
+    ```bash zsh
+    source ~/.zshrc 
+    ```
   </Accordion>
   <Accordion title="Undefined error when I navigate to pages other than homepage">
     Make sure the environment variables, `.env.local` and `.env`, are set at the
