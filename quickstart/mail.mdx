@@ -60,7 +60,15 @@ If you have a Windows operating system, complete these steps before continuing.
 
     ## Step 3: Clone the repositories.
 
-    We use [GitHub](https://github.com/hoagieclub/) for version control. You will need to have [GitHub SSH keys](https://docs.github.com/en/github/authenticating-to-github/connecting-to-github-with-ssh) set up.
+    We use [GitHub](https://github.com/hoagieclub/) for version control. You will need to have GitHub Personal Access Tokens set up.
+
+    <Accordion title="Set Up Personal Access Token">
+    1. Run `git config --global credential.helper store`
+    2. Create a [Personal Access Token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens) - either fine-grained or classic is fine
+    3. Next time you run a git command in terminal it will [ask for credentials](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens#using-a-personal-access-token-on-the-command-line)
+    </Accordion>
+
+
 
     ```bash bash
     git clone https://github.com/HoagieClub/mail.git
